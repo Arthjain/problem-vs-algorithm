@@ -1,10 +1,3 @@
-Heap sort algorithm was used to sort the digit array. Now, the list is traversed and 2 numbers are constructed. Comparisons are made and the result is obtained by the sum of largest of 2 numbers.
+To rearrange a list of digits into two large numbers I first reverse merge sort the list. Merge sort time complexity is O(n log(n)) and puts the largest number at the front of the list. Then I simply iterate through the numbers, taking turns to place one in either list1 or list2, and converting them to strings as the numbers are added to a list. Finally, I join the list of strings and convert to ints.
 
-TIME COMPLEXITY:
-
-The time complexity will be O(nlogn) as of Heap sort algorithm.
-
-
-SPACE COMPLEXITY:
-
-The Space complexity will be O(n) as the construction of numbers grow as the linear size of input.
+The time complexity is O(2n log(n)) because we iterate through the list after it's merged, which simplifies to O(n log(n)). The space complexity of merge sort is O(n) with two lists created again after merging for a total of O(3n), simplified to O(n).
