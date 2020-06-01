@@ -2,8 +2,8 @@ Trie classes and Trie Nodes are implemented in the program. The character string
 
 TIME COMPLEXITY:
 
-The time complexity will O(word_length*unique_chars*no_of_words)
-Word length=n unique chars as m
+Analysis:
+For the trie, time complexity of searching and inserting from a trie depends on the length of the word a that’s being searched for, inserted, and the number of total words, n, making the runtime of these operations O(a*n). Looking into the space complexity of a trie, the worst case, would be when we have a word (or words), with no common characters between them, hence having, a node for each letter. Resulting in a space complexity of O(n).
 
 SPACE COMPLEXITY:
 
