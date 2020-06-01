@@ -1,44 +1,31 @@
-def sqrt(number):
-    try:
-        int(number)
-    except ValueError:
+def squart(x):    
+    if (x == 0 or x == 1): 
+        return x
+    elif x<0 :
         return None
+   
+    start = 1
+    end = x    
+    while start <= end: 
+        mid = (start + end) // 2          
+         
+        if (mid*mid == x) : return mid              
+        elif (mid * mid < x) :
+            start = mid + 1
+            ans = mid 
+              
+        else :
+            end = mid-1
+              
+    return ans 
 
-    if number < 0:
-        return None
-
-    if number == 0:
-        return 0
-
-    left_value = 1
-    right_value = number
-
-    while right_value > left_value + 1:
-        mid_value = (left_value + right_value) // 2
-
-        mid_value_square = mid_value * mid_value
-
-        if mid_value_square > number:
-            right_value = mid_value
-        elif mid_value_square < number:
-            left_value = mid_value
-        else:
-            return mid_value
-
-    return left_value
-
-
-# Test case 1 - normal case
-print("Calling function with value 9")
-# Should print pass as the square root is exactly 3
-print ("Pass" if  (3 == sqrt(9)) else "Fail")
-
-# Test case 2 - zero value
-print("Calling function with value 0")
-# Should print pass as the square root is 0
-print ("Pass" if  (0 == sqrt(0)) else "Fail")
-
-# Test case 3 - negative value
-print("Calling function with negative value -10")
-# Should print pass as the function should return None
-print ("Pass" if  (None == sqrt(-10)) else "Fail")
+print ("Pass" if  (3 == squart(9)) else "Fail")
+print ("Pass" if  (0 == squart(0)) else "Fail")
+print ("Pass" if  (4 == squart(16)) else "Fail")
+print ("Pass" if  (1 == squart(1)) else "Fail")
+print ("Pass" if  (5 == squart(27)) else "Fail")
+print ("Pass" if  (None == squart(-1)) else "Fail")
+print ("Pass" if  ( 625== squart(390625)) else "Fail")
+print ("Pass" if  (11111 == squart(123456789)) else "Fail")
+print ("Pass" if  (1 == squart(1.2)) else "Fail")
+print ("Pass" if  (351 == squart(123456.123456)) else "Fail")
