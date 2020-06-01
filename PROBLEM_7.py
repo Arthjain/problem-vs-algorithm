@@ -77,7 +77,6 @@ class Router:
 router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
 router.add_handler("/home/about", "about handler")  # add a route
 
-
 # Test case 1 - look up root handler with path "/"
 print("Test case 1 - look up root handler with path '/'")
 # should print 'root handler'
