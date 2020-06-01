@@ -1,10 +1,1 @@
-Linear search algorithm is implemented to find the min or max value in an unsorted array.
-
-TIME COMPLEXITY:
-
-The time complexity will be O(n) as only single traverse is required.
-
-
-SPACE COMPLEXITY:
-
-The Space complexity will be O(1) as constant space is used.
+Traversing the array of ints has a time complexity of O(n) and a space complexity of O(1). We iterate through each number in a list of integers, and we set two variables, min and max, which we will update as check the min and max of each number. If the current number is larger than the max, it becomes the new max. Similarly, if the current number is less than the min, it becomes the new min.
