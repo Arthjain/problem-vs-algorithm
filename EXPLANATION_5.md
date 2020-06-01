@@ -3,7 +3,7 @@ Trie classes and Trie Nodes are implemented in the program. The character string
 TIME COMPLEXITY:
 
 The time complexity will O(word_length*unique_chars*no_of_words)
-
+Word length=n unique chars as m
 
 SPACE COMPLEXITY:
 
