@@ -1,70 +1,58 @@
-def heapsort(arr):
-    arr_len = len(arr)
+def joine(left, right):
 
-    for i in range(arr_len - 1, -1, -1):
-        heapify(arr, len(arr), i)
-        arr[0], arr[i] = arr[i], arr[0]
+    l_index = 0
+    r_index = 0
+
+    together = []
+    while(l_index < len(left) and r_index < len(right)):
+        if(left[l_index] < right[r_index]):
+            together.append(right[r_index])
+            r_index += 1
+        else:
+            together.append(left[l_index])
+            l_index += 1
+
+    together += left[l_index:]
+    together += right[r_index:]
+
+    return together
 
 
-def heapify(arr, n, i):
-    for i in range(1, i + 1):
-        data_index = i
-        while data_index > 0:
-            parent_index = (data_index - 1) // 2
-            if arr[data_index] > arr[parent_index]:
-                arr[data_index], arr[parent_index] = arr[parent_index], arr[data_index]
-                data_index = parent_index
-            else:
-                break
+def sort(input_list):
+
+    if(len(input_list) <= 1):
+        return input_list
+
+    mid = len(input_list)//2
+
+    left = input_list[:mid]
+    right = input_list[mid:]
+
+    left = sort(left)
+    right = sort(right)
+
+    return joine(left, right)
 
 
 def rearrange_digits(input_list):
-    if len(input_list) == 0:
-        return []
-    heapsort(input_list)
-    number_1_list = list()
-    number_2_list = list()
-
-    input_list_len = len(input_list)
-    if input_list_len % 2 == 1:
-        digit = input_list.pop()
-        number_1_list.append(digit)
-    input_list_len = len(input_list)
-    for i in range(input_list_len, 0, -1):
-        digit = input_list.pop()
-        if i % 2 == 0:
-            number_1_list.append(digit)
-        else:
-            number_2_list.append(digit)
-    number_1_str = ''.join(str(n) for n in number_1_list)
-    number_2_str = ''.join(str(n) for n in number_2_list)
-    number_1 = int(number_1_str)
-    number_2 = int(number_2_str)
-
-    return [number_1, number_2]
+    if(not(len(input_list))):
+        return "Empty Input List"
+    input_list = sort(input_list)
+    order = 1
+    counter = 1
+    num1 = 0
+    num2 = 0
+    for i in reversed(range(len(input_list))):
+        if(counter == 1):
+            num1 += (order*input_list[i])
+            counter = 2
+        elif(counter == 2):
+            num2 += (order*input_list[i])
+            counter = 1
+            order *= 10
+    return [num1, num2]
 
 
-def test_function(test_case):
-    output = rearrange_digits(test_case[0])
-    solution = test_case[1]
-    if sum(output) == sum(solution):
-        print("Pass")
-    else:
-        print("Fail")
-
-
-# Test case 1 - un-sorted array as input
-print("Calling function with un-sorted array: [4, 6, 2, 5, 9, 8]")
-test_case_1 = [[4, 6, 2, 5, 9, 8], [964, 852]]
-# Should print pass as the output should be [964, 852]
-test_function(test_case_1)
-
-# Test case 2 - sorted array as input
-test_case_2 = [[1, 2, 3, 4, 5], [542, 31]]
-# Should print pass as the output should be [542, 31]
-test_function(test_case_2)
-
-# Test case 3 - empty array as input
-test_case_3 = [[], []]
-# Should print pass as the output should be []
-test_function(test_case_3)
+print(rearrange_digits([3, 5, 1, 4, 2]))  # prints [531,42]
+print(rearrange_digits([4]))  # prints [4,0]
+print(rearrange_digits([]))  # prints Empty Input List
